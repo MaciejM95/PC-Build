@@ -2,7 +2,7 @@
 :root {
   --bg: #0e1420; --card: #161d2a; --text: #e6edf5; --muted: #a0adba;
   --accent: #4da3ff; --accent-2: #57d3a6; --border: #2a3546;
-  --sub-bg: #0b1524; --sub-minor: #0a1a2b; --tooltip-bg: #0b1a2b;
+  --sub-bg: #0b1524; --sub-minor: #0a1a2b;
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Noto Sans', 'Helvetica Neue', Arial, sans-serif; }
@@ -14,10 +14,7 @@ html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); f
 .nav a { color: var(--muted); text-decoration: none; padding: 8px 10px; border-radius: 8px; }
 .nav a:hover { color: var(--text); background: #0f1724; }
 .nav a.active { color: #0b0f14; background: linear-gradient(135deg, var(--accent), var(--accent-2)); font-weight: 700; }
-@media (max-width: 560px) {
-  .topbar { gap: 8px; }
-  .nav { width: 100%; }
-}
+@media (max-width: 560px) { .topbar { gap: 8px; } .nav { width: 100%; } }
 
 /* Mode bar */
 .modebar { padding: 10px 14px; border-bottom: 1px solid var(--border); background: #0d1421; position: sticky; top: 56px; z-index: 49; }
@@ -29,7 +26,7 @@ html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); f
 
 /* Progress bar */
 .progressbar { position: sticky; top: 102px; width: 100%; background: #0b1320; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 8px 14px; z-index: 48; }
-.progress-fill { height: 6px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); border-radius: 6px; }
+.progress-fill { height: 6px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); border-radius: 6px; width: 11%; }
 .progress-text { color: var(--muted); font-size: 0.9rem; margin-left: 10px; }
 
 .container { max-width: 980px; margin: 0 auto; padding: 24px; }
@@ -76,3 +73,7 @@ button:hover, .button:hover { filter: brightness(1.08); }
 
 /* Disclaimer */
 .disclaimer { flex-basis: 100%; color: var(--muted); }
+
+/* Mode container visibility */
+.mode { display: block; }
+.mode[hidden] { display: none !important; }
