@@ -17,6 +17,7 @@
     </nav>
   </header>
 
+  <!-- Progress bar (sticky) -->
   <div class="progressbar" aria-label="Postęp"> 
     <div class="progress-fill"></div>
     <div class="progress-text">Krok <span id="progress-step">1</span>/<span id="progress-total">8</span></div>
@@ -28,23 +29,24 @@
       <p class="subtitle">Zaznacz lub uzupełnij — wystarczy kilka minut.</p>
     </section>
 
+    <!-- TYLKO: Bazowy -->
     <form id="form-bazowy" class="card" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
       <input type="hidden" name="_subject" value="Kwestionariusz – dobór komputera (Bazowy)" />
       <input type="hidden" name="submitted_at" id="submitted_at_b" />
-      <input type="hidden" name="form_version" value="v3.7-bazowy" />
+      <input type="hidden" name="form_version" value="v3.5-bazowy" />
       <input type="hidden" name="build_mode" value="Bazowy" />
 
       <!-- 1: Zastosowanie główne -->
       <section class="block" data-step="1">
         <h2><span class="num">1</span> Zastosowanie główne</h2>
         <div class="grid">
-          <label class="opt-square"><input type="checkbox" name="usage[]" value="Praca biurowa / nauka / internet" /> <span class="icon">💼</span><span>Praca biurowa / nauka / internet</span></label>
-          <label class="opt-square"><input type="checkbox" name="usage[]" value="Gry" /> <span class="icon">🎮</span><span>Gry</span></label>
-          <label class="opt-square"><input type="checkbox" name="usage[]" value="Grafika / obróbka zdjęć" /> <span class="icon">🖌️</span><span>Grafika / obróbka zdjęć</span></label>
-          <label class="opt-square"><input type="checkbox" name="usage[]" value="Montaż wideo" /> <span class="icon">🎬</span><span>Montaż wideo</span></label>
-          <label class="opt-square"><input type="checkbox" name="usage[]" value="Programowanie" /> <span class="icon">💻</span><span>Programowanie</span></label>
+          <label><input type="checkbox" name="usage[]" value="Praca biurowa / nauka / internet" /> Praca biurowa / nauka / internet</label>
+          <label><input type="checkbox" name="usage[]" value="Gry" /> Gry</label>
+          <label><input type="checkbox" name="usage[]" value="Grafika / obróbka zdjęć" /> Grafika / obróbka zdjęć</label>
+          <label><input type="checkbox" name="usage[]" value="Montaż wideo" /> Montaż wideo</label>
+          <label><input type="checkbox" name="usage[]" value="Programowanie" /> Programowanie</label>
           <label class="inline-stack">
-            <span class="opt-square mini"><input type="checkbox" name="usage[]" value="Inne" /> <span class="icon">➕</span><span>Inne</span></span>
+            <span><input type="checkbox" name="usage[]" value="Inne" /> Inne:</span>
             <input type="text" name="usage_other" placeholder="Doprecyzuj (opcjonalnie)" />
           </label>
         </div>
@@ -53,19 +55,19 @@
         <div class="sub cond fade" data-condition="Gry" hidden>
           <h3>Podkategoria: Gry</h3>
           <div class="grid">
-            <label class="opt-square"><input type="checkbox" name="gaming_kinds[]" value="E‑sport" /> <span class="icon">🏆</span><span>E‑sport</span></label>
-            <label class="opt-square"><input type="checkbox" name="gaming_kinds[]" value="AAA" /> <span class="icon">🔥</span><span>AAA</span></label>
-            <label class="opt-square"><input type="checkbox" name="gaming_kinds[]" value="VR" /> <span class="icon">🕶️</span><span>VR</span></label>
-            <label class="opt-square"><input type="checkbox" name="gaming_kinds[]" value="SimRacing" /> <span class="icon">🏎️</span><span>SimRacing</span></label>
-            <label class="opt-square"><input type="checkbox" name="gaming_kinds[]" value="Strategie" /> <span class="icon">🧠</span><span>Strategie</span></label>
-            <label class="opt-square"><input type="checkbox" name="gaming_kinds[]" value="MMO" /> <span class="icon">👥</span><span>MMO</span></label>
+            <label><input type="checkbox" name="gaming_kinds[]" value="E‑sport" /> E‑sport</label>
+            <label><input type="checkbox" name="gaming_kinds[]" value="AAA" /> AAA</label>
+            <label><input type="checkbox" name="gaming_kinds[]" value="VR" /> VR</label>
+            <label><input type="checkbox" name="gaming_kinds[]" value="SimRacing" /> SimRacing</label>
+            <label><input type="checkbox" name="gaming_kinds[]" value="Strategie" /> Strategie</label>
+            <label><input type="checkbox" name="gaming_kinds[]" value="MMO" /> MMO</label>
           </div>
         </div>
       </section>
 
       <!-- 2: Obudowa (kompaktowo + opis z prawej) -->
       <section class="block" data-step="2">
-        <h2><span class="num">2</span> Obudowa — preferencje rozmiaru <span class="hint">(jeśli wybierzesz „Bez znaczenia”, dobierzemy rozmiar do Twoich potrzeb)</span></h2>
+        <h2><span class="num">2</span> Obudowa — preferencje rozmiaru</h2>
         <div class="case-layout compact">
           <div class="case-pills" role="radiogroup" aria-label="Rozmiar obudowy">
             <label class="pill"><input type="radio" name="case_size" value="Mini‑ITX (Mini)" /><span>Mini‑ITX (Mini)</span></label>
@@ -86,13 +88,13 @@
         <h2><span class="num">3</span> Dysk — preferencje dla dysku systemowego</h2>
         <p class="tiny">Jeśli wybierzesz „Nie”, <strong>skonsultujemy to oddzielnie</strong> po kontakcie.</p>
         <div class="grid">
-          <label class="opt-square"><input type="radio" name="os_drive_pref_b" value="Nie" data-toggle="radio" data-show-when="Tak" data-target="#storage-details-b" /> <span class="icon">❌</span><span>Nie</span></label>
-          <label class="opt-square"><input type="radio" name="os_drive_pref_b" value="Tak" data-toggle="radio" data-show-when="Tak" data-target="#storage-details-b" /> <span class="icon">✅</span><span>Tak</span></label>
+          <label><input type="radio" name="os_drive_pref_b" value="Nie" data-toggle="radio" data-show-when="Tak" data-target="#storage-details-b" /> Nie</label>
+          <label><input type="radio" name="os_drive_pref_b" value="Tak" data-toggle="radio" data-show-when="Tak" data-target="#storage-details-b" /> Tak</label>
         </div>
         <div class="sub fade" id="storage-details-b" hidden>
           <h3>Konfiguracja i rozmiary</h3>
           <div class="grid">
-            <label class="opt-square"><span class="icon">⚙️</span><span>Konfiguracja dysków</span>
+            <label>Konfiguracja dysków:
               <select name="storage_config">
                 <option>SSD (NVMe)</option>
                 <option>SSD (NVMe) + HDD</option>
@@ -100,7 +102,7 @@
               </select>
               <span class="hint-line">SSD (NVMe) — najszybszy. SSD+HDD — większa, tańsza pojemność na dane.</span>
             </label>
-            <label class="opt-square"><span class="icon">🧠</span><span>Rozmiar dysku systemowego</span>
+            <label>Rozmiar dysku systemowego:
               <select name="os_drive_size">
                 <option>256 GB</option>
                 <option>512 GB</option>
@@ -109,7 +111,7 @@
               </select>
               <span class="hint-line">Minimum to <strong>256 GB</strong>. 512 GB wygodniejsze; 1 TB zalecane przy grach/wideo.</span>
             </label>
-            <label class="opt-square"><span class="icon">📦</span><span>Rozmiar dysku danych (drugi dysk)</span>
+            <label>Rozmiar dysku danych (drugi dysk):
               <select name="data_drive_size">
                 <option value="">(brak / zostaw puste)</option>
                 <option>1 TB</option>
@@ -128,13 +130,13 @@
         <h2><span class="num">4</span> Monitor — czy chcesz skonsultować?</h2>
         <p class="tiny">Możesz zostawić puste — skonsultujemy to oddzielnie.</p>
         <div class="grid">
-          <label class="opt-square"><input type="radio" name="monitor_consult_b" value="Nie" data-toggle="radio" data-show-when="Tak" data-target="#monitor-details-b" /> <span class="icon">❌</span><span>Nie</span></label>
-          <label class="opt-square"><input type="radio" name="monitor_consult_b" value="Tak" data-toggle="radio" data-show-when="Tak" data-target="#monitor-details-b" /> <span class="icon">✅</span><span>Tak</span></label>
+          <label><input type="radio" name="monitor_consult_b" value="Nie" data-toggle="radio" data-show-when="Tak" data-target="#monitor-details-b" /> Nie</label>
+          <label><input type="radio" name="monitor_consult_b" value="Tak" data-toggle="radio" data-show-when="Tak" data-target="#monitor-details-b" /> Tak</label>
         </div>
         <div class="sub fade" id="monitor-details-b" hidden>
           <h3>Parametry monitora</h3>
           <div class="grid">
-            <label class="opt-square"><span class="icon">🖥️</span><span>Ilość monitorów</span>
+            <label>Ilość monitorów:
               <select name="monitor_count">
                 <option>1</option>
                 <option>2</option>
@@ -142,7 +144,7 @@
               </select>
               <span class="hint-line">3+ monitorów → sprawdzimy wyjścia wideo GPU (HDMI/DP/USB‑C).</span>
             </label>
-            <label class="opt-square"><span class="icon">🎯</span><span>Rodzaj</span>
+            <label>Rodzaj:
               <select name="monitor_type">
                 <option>Biuro/uniwersalny</option>
                 <option>Gaming</option>
@@ -152,7 +154,7 @@
               </select>
               <span class="hint-line">Gaming → wysoka częstotliwość; Pro grafika → lepsze kolory/kalibracja.</span>
             </label>
-            <label class="opt-square"><span class="icon">⚡</span><span>Odświeżanie</span>
+            <label>Odświeżanie:
               <select name="monitor_refresh">
                 <option>60 Hz</option>
                 <option>75 Hz</option>
@@ -164,7 +166,7 @@
               </select>
               <span class="hint-line">144 Hz+ — płynne granie; 60–75 Hz — biuro/praca.</span>
             </label>
-            <label class="opt-square"><span class="icon">📐</span><span>Rozmiar</span>
+            <label>Rozmiar:
               <select name="monitor_size">
                 <option>24"</option>
                 <option>27"</option>
@@ -173,7 +175,7 @@
               </select>
               <span class="hint-line">27–32″: uniwersalnie; 34″+ ultrawide — szeroka przestrzeń robocza.</span>
             </label>
-            <label class="opt-square"><span class="icon">🔍</span><span>Rozdzielczość</span>
+            <label>Rozdzielczość:
               <select name="monitor_res">
                 <option>Full HD</option>
                 <option>1440p</option>
@@ -182,7 +184,7 @@
               </select>
               <span class="hint-line">1440p — sweet spot do gier; 4K — szczegóły, większe wymagania GPU.</span>
             </label>
-            <label class="opt-square"><span class="icon">🧪</span><span>Rodzaj matrycy</span>
+            <label>Rodzaj matrycy:
               <select name="monitor_panel">
                 <option>IPS</option>
                 <option>VA</option>
@@ -199,13 +201,20 @@
       <section class="block" data-step="5">
         <h2><span class="num">5</span> Czy masz już jakieś części?</h2>
         <div class="grid">
-          <label class="opt-square"><input type="radio" name="parts_have" value="Nie" /> <span class="icon">📭</span><span>Nie</span></label>
-          <label class="opt-square inline-flex">
+          <label><input type="radio" name="parts_have" value="Nie" /> Nie</label>
+          <label class="inline-flex">
             <input type="radio" name="parts_have" value="Tak" />
-            <span class="icon">🧰</span><span>Tak, jakie:</span>
+            <span>Tak, jakie:</span>
             <input class="flex-field" type="text" name="parts_list" placeholder="np. dysk SSD, obudowa…" />
           </label>
         </div>
+      </section>
+
+      <!-- 6: Uwagi -->
+      <section class="block" data-step="6">
+        <h2><span class="num">6</span> Dodatkowe uwagi / oczekiwania</h2>
+        <textarea name="notes" rows="4" placeholder="np. „ma być bardzo cichy”, „dużo RGB”, „pod 2–3 monitory”, „możliwa rozbudowa”, „chłodzenie wodne”"></textarea>
+        <p class="tiny">(Możesz zostawić puste — dopytamy w odpowiedzi)</p>
       </section>
 
       <!-- 7: Kontakt -->
@@ -221,10 +230,10 @@
         <h2><span class="num">8</span> Budżet na komputer (bez monitora i peryferiów)</h2>
         <p class="tiny">Peryferia = klawiatura, mysz, słuchawki, głośniki.</p>
         <div class="grid budget-grid">
-          <label class="opt-square"><input type="radio" name="budget_range" value="Do 2000 zł" /> <span class="icon">💸</span><span>Do&nbsp;2000&nbsp;zł</span></label>
-          <label class="opt-square"><input type="radio" name="budget_range" value="2000–5000 zł" /> <span class="icon">💵</span><span>2000–5000&nbsp;zł</span></label>
-          <label class="opt-square"><input type="radio" name="budget_range" value="5000–10000 zł" /> <span class="icon">💳</span><span>5000–10000&nbsp;zł</span></label>
-          <label class="opt-square"><input type="radio" name="budget_range" value="10000+ zł" /> <span class="icon">🏦</span><span>10000+&nbsp;zł</span></label>
+          <label><input type="radio" name="budget_range" value="Do 2000 zł" /> Do&nbsp;2000&nbsp;zł</label>
+          <label><input type="radio" name="budget_range" value="2000–5000 zł" /> 2000–5000&nbsp;zł</label>
+          <label><input type="radio" name="budget_range" value="5000–10000 zł" /> 5000–10000&nbsp;zł</label>
+          <label><input type="radio" name="budget_range" value="10000+ zł" /> 10000+&nbsp;zł</label>
         </div>
         <div class="inline nowrap">
           <span>Lub wpisz kwotę ręcznie:</span>
