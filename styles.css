@@ -8,6 +8,8 @@
   --accent: #4da3ff;    /* niebieski */
   --accent-2: #57d3a6;  /* zielono-niebieski */
   --border: #2a3546;    /* granatowa ramka */
+  --sub-bg: #0b1524;    /* przyciemniona podkategoria */
+  --sub-minor: #0a1a2b; /* jeszcze ciemniejsza dla fieldsetów */
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Noto Sans', 'Helvetica Neue', Arial, sans-serif; }
@@ -27,15 +29,24 @@ html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); f
 .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 18px; margin: 18px 0; }
 .block { margin: 16px 0; }
 .hint { color: var(--muted); font-weight: normal; font-size: 0.95rem; }
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 8px 16px; margin-top: 8px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px 16px; margin-top: 8px; }
 .inline { display: grid; grid-template-columns: auto 1fr; gap: 8px; align-items: center; }
+.inline-stack { display: grid; grid-template-columns: 1fr; gap: 6px; }
 label { cursor: pointer; }
 input[type="text"], input[type="number"], input[type="email"], textarea, select {
   width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 10px; background: #0f1521; color: var(--text);
 }
 input[type="email"]:required { border-color: #5aa8ff; }
 textarea { resize: vertical; }
-.sub { margin-top: 8px; border: 1px dashed var(--border); padding: 8px; border-radius: 10px; }
+
+/* Podkategorie (lepsza widoczność) */
+.sub { margin-top: 10px; border: 1px solid var(--border); border-left: 3px solid var(--accent); padding: 12px; border-radius: 10px; background: var(--sub-bg); }
+.sub h3 { margin: 0 0 8px; color: var(--text); }
+.sub.minor { background: var(--sub-minor); border-left-color: var(--accent-2); }
+
+/* Numerki przy nagłówkach */
+.num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #0b0f14; font-weight: 800; margin-right: 8px; }
+
 .actions { display: flex; align-items: center; gap: 16px; }
 .button, button {
   background: linear-gradient(135deg, var(--accent), var(--accent-2));
@@ -48,4 +59,8 @@ button:hover, .button:hover { filter: brightness(1.08); }
 #status { min-height: 1.2em; }
 
 .case-illustration { display: flex; justify-content: center; padding: 8px; background: #0d1421; border: 1px solid var(--border); border-radius: 10px; }
-.case-illustration img { max-width: 100%; height: auto; }
+.case-illustration svg { max-width: 100%; height: auto; }
+
+/* Budżet: ładny układ */
+.budget-grid label { padding: 8px 10px; border: 1px solid var(--border); border-radius: 10px; background: #0f1521; }
+.manual-budget { margin-top: 8px; }

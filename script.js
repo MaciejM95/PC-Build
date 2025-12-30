@@ -65,9 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // JSON payload
     const payload = {};
-    for (const [key, value] of formData.entries()) {
-      payload[key] = value;
-    }
+    for (const [key, value] of formData.entries()) payload[key] = value;
 
     try {
       const resp = await fetch(form.action, {

@@ -31,23 +31,22 @@
 
       <!-- 1: Zastosowanie główne (warunkowe detale) -->
       <section class="block">
-        <h2>1️⃣ Do czego głównie będzie używany komputer? <span class="hint">(można zaznaczyć więcej niż jedną opcję)</span></h2>
+        <h2><span class="num">1</span> Do czego głównie będzie używany komputer? <span class="hint">(można zaznaczyć więcej niż jedną opcję)</span></h2>
         <div class="grid">
           <label><input type="checkbox" name="usage[]" value="Praca biurowa / nauka / internet" /> Praca biurowa / nauka / internet</label>
           <label><input type="checkbox" name="usage[]" value="Gry" /> Gry</label>
           <label><input type="checkbox" name="usage[]" value="Grafika / obróbka zdjęć" /> Grafika / obróbka zdjęć</label>
           <label><input type="checkbox" name="usage[]" value="Montaż wideo" /> Montaż wideo</label>
           <label><input type="checkbox" name="usage[]" value="Programowanie" /> Programowanie</label>
-          <label class="inline">
-            <input type="checkbox" name="usage[]" value="Inne" />
-            Inne:
+          <label class="inline-stack">
+            <span><input type="checkbox" name="usage[]" value="Inne" /> Inne:</span>
             <input type="text" name="usage_other" placeholder="Doprecyzuj (opcjonalnie)" />
           </label>
         </div>
 
         <!-- Detale: GRY -->
         <div class="sub cond" data-condition="Gry" hidden>
-          <h3>Szczegóły — Gry</h3>
+          <h3>Podkategoria: Gry</h3>
           <div class="grid">
             <label><input type="checkbox" name="gaming_kinds[]" value="E‑sport (CS, LoL, Valorant)" /> E‑sport (CS, LoL, Valorant)</label>
             <label><input type="checkbox" name="gaming_kinds[]" value="Gry AAA (Wiedźmin, Cyberpunk, God of War)" /> Gry AAA (Wiedźmin, Cyberpunk, God of War)</label>
@@ -57,7 +56,7 @@
             <label><input type="checkbox" name="gaming_kinds[]" value="MMO" /> MMO</label>
             <label class="inline">Inne: <input type="text" name="gaming_other" placeholder="np. symulatory lotnicze" /></label>
           </div>
-          <fieldset class="sub">
+          <fieldset class="sub minor">
             <legend>Monitor do gier</legend>
             <div class="grid">
               <label>Rozdzielczość:
@@ -86,7 +85,7 @@
 
         <!-- Detale: PRACA BIUROWA -->
         <div class="sub cond" data-condition="Praca biurowa / nauka / internet" hidden>
-          <h3>Szczegóły — Praca biurowa / nauka</h3>
+          <h3>Podkategoria: Praca biurowa / nauka</h3>
           <div class="grid">
             <label>Liczba kart w przeglądarce: <input type="number" name="office_tabs" min="1" max="100" placeholder="np. 20" /></label>
             <label>Wideokonferencje: 
@@ -102,7 +101,7 @@
 
         <!-- Detale: GRAFIKA -->
         <div class="sub cond" data-condition="Grafika / obróbka zdjęć" hidden>
-          <h3>Szczegóły — Grafika / zdjęcia</h3>
+          <h3>Podkategoria: Grafika / zdjęcia</h3>
           <div class="grid">
             <label>Oprogramowanie: <input type="text" name="photo_apps" placeholder="np. Photoshop, Lightroom" /></label>
             <label>Wymagana dokładność kolorów: 
@@ -123,7 +122,7 @@
 
         <!-- Detale: MONTAŻ WIDEO -->
         <div class="sub cond" data-condition="Montaż wideo" hidden>
-          <h3>Szczegóły — Wideo</h3>
+          <h3>Podkategoria: Wideo</h3>
           <div class="grid">
             <label>NLE: <input type="text" name="video_nle" placeholder="np. Premiere, DaVinci Resolve" /></label>
             <label>Rozdzielczość materiału: 
@@ -146,7 +145,7 @@
 
         <!-- Detale: PROGRAMOWANIE -->
         <div class="sub cond" data-condition="Programowanie" hidden>
-          <h3>Szczegóły — Programowanie</h3>
+          <h3>Podkategoria: Programowanie</h3>
           <div class="grid">
             <label>Obszar: 
               <select name="dev_area">
@@ -168,12 +167,31 @@
         </div>
       </section>
 
-      <!-- CASE: Obudowa z grafiką -->
+      <!-- 2: CASE: Obudowa z grafiką (inline SVG dla pewności wyświetlania) -->
       <section class="block">
-        <h2>Obudowa — preferencje rozmiaru</h2>
+        <h2><span class="num">2</span> Obudowa — preferencje rozmiaru</h2>
         <p class="tiny">Poniżej poglądowe rozmiary obudów. Wybierz preferowany typ lub zostaw bez znaczenia.</p>
         <div class="case-illustration">
-          <img src="assets/cases.svg" alt="Schemat rozmiarów obudów" />
+          <svg width="100%" height="220" viewBox="0 0 640 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Schemat rozmiarów obudów">
+            <style>
+              .box { fill:#182233; stroke:#2a3546; stroke-width:2; }
+              .label { fill:#a0adba; font-family: Arial, sans-serif; font-size:12px; }
+              .title { fill:#e6edf5; font-family: Arial, sans-serif; font-size:14px; font-weight:bold; }
+            </style>
+            <rect x="20" y="80" width="80" height="60" class="box" />
+            <text x="60" y="75" text-anchor="middle" class="title">Mini‑PC</text>
+            <text x="60" y="155" text-anchor="middle" class="label">SFF</text>
+            <rect x="130" y="70" width="100" height="80" class="box" />
+            <text x="180" y="65" text-anchor="middle" class="title">Mini‑ITX</text>
+            <rect x="260" y="60" width="120" height="100" class="box" />
+            <text x="320" y="55" text-anchor="middle" class="title">mATX</text>
+            <rect x="410" y="50" width="140" height="120" class="box" />
+            <text x="480" y="45" text-anchor="middle" class="title">ATX</text>
+            <rect x="570" y="40" width="50" height="140" class="box" />
+            <text x="595" y="35" text-anchor="middle" class="title">Full</text>
+            <text x="595" y="190" text-anchor="middle" class="title">Tower</text>
+            <text x="320" y="210" text-anchor="middle" class="label">Wizualizacja poglądowa — nie odzwierciedla dokładnych wymiarów.</text>
+          </svg>
         </div>
         <div class="grid">
           <label><input type="radio" name="case_size" value="Mini‑PC (SFF)" /> Mini‑PC (SFF)</label>
@@ -185,14 +203,15 @@
         </div>
       </section>
 
-      <!-- STORAGE: Dysk systemowy i dane (warunkowe) -->
+      <!-- 3: STORAGE: Dysk systemowy i dane (warunkowe) -->
       <section class="block">
-        <h2>Dysk — preferencje dla dysku systemowego</h2>
+        <h2><span class="num">3</span> Dysk — preferencje dla dysku systemowego</h2>
         <div class="grid">
           <label><input type="radio" name="os_drive_pref" value="Nie" /> Nie</label>
           <label><input type="radio" name="os_drive_pref" value="Tak" /> Tak</label>
         </div>
         <div class="sub" id="storage-details" hidden>
+          <h3>Podkategoria: Konfiguracja i rozmiary</h3>
           <div class="grid">
             <label>Konfiguracja dysków:
               <select name="storage_config">
@@ -222,15 +241,16 @@
         </div>
       </section>
 
-      <!-- MONITOR: konsultacja warunkowa -->
+      <!-- 4: MONITOR: konsultacja warunkowa -->
       <section class="block">
-        <h2>Monitor — czy chcesz skonsultować?</h2>
+        <h2><span class="num">4</span> Monitor — czy chcesz skonsultować?</h2>
         <p class="tiny">Możesz zostawić puste — skonsultujemy to oddzielnie.</p>
         <div class="grid">
           <label><input type="radio" name="monitor_consult" value="Nie" /> Nie</label>
           <label><input type="radio" name="monitor_consult" value="Tak" /> Tak</label>
         </div>
         <div class="sub" id="monitor-details" hidden>
+          <h3>Podkategoria: Parametry monitora</h3>
           <div class="grid">
             <label>Rodzaj monitora:
               <select name="monitor_type">
@@ -280,9 +300,9 @@
         </div>
       </section>
 
-      <!-- CZĘŚCI posiadane -->
+      <!-- 5: CZĘŚCI posiadane -->
       <section class="block">
-        <h2>Czy masz już jakieś części?</h2>
+        <h2><span class="num">5</span> Czy masz już jakieś części?</h2>
         <div class="grid">
           <label><input type="radio" name="parts_have" value="Nie" /> Nie</label>
           <label class="inline">
@@ -292,9 +312,9 @@
         </div>
       </section>
 
-      <!-- System operacyjny -->
+      <!-- 6: System operacyjny -->
       <section class="block">
-        <h2>System operacyjny</h2>
+        <h2><span class="num">6</span> System operacyjny</h2>
         <div class="grid">
           <label><input type="radio" name="os" value="Windows" /> Windows</label>
           <label><input type="radio" name="os" value="Linux" /> Linux</label>
@@ -302,16 +322,16 @@
         </div>
       </section>
 
-      <!-- Dodatkowe uwagi -->
+      <!-- 7: Dodatkowe uwagi -->
       <section class="block">
-        <h2>Dodatkowe uwagi / oczekiwania</h2>
-        <textarea name="notes" rows="4" placeholder="np. „ma być bardzo cichy”, „bez światełek”, „pod 2–3 monitory”, „możliwa rozbudowa”, „chłodzenie wodne”"></textarea>
+        <h2><span class="num">7</span> Dodatkowe uwagi / oczekiwania</h2>
+        <textarea name="notes" rows="4" placeholder="np. „ma być bardzo cichy”, „dużo RGB”, „pod 2–3 monitory”, „możliwa rozbudowa”, „chłodzenie wodne”"></textarea>
         <p class="tiny">(Możesz zostawić puste — dopytamy w odpowiedzi)</p>
       </section>
 
-      <!-- Kontakt -->
+      <!-- 8: Kontakt -->
       <section class="block">
-        <h2>Kontakt</h2>
+        <h2><span class="num">8</span> Kontakt</h2>
         <label class="inline">
           E‑mail: <input type="email" name="contact_email" placeholder="twoj@mail.com" required />
         </label>
@@ -320,16 +340,16 @@
         </label>
       </section>
 
-      <!-- BUDŻET (na końcu, przed wysyłką) -->
+      <!-- 9: BUDŻET (na końcu) -->
       <section class="block">
-        <h2>Budżet na komputer (bez monitora i peryferiów)</h2>
-        <div class="grid">
-          <label><input type="radio" name="budget_range" value="Do 2000 zł" /> Do 2000 zł</label>
-          <label><input type="radio" name="budget_range" value="2000–5000 zł" /> 2000–5000 zł</label>
-          <label><input type="radio" name="budget_range" value="5000–10000 zł" /> 5000–10000 zł</label>
-          <label><input type="radio" name="budget_range" value="10000+ zł" /> 10000+ zł</label>
+        <h2><span class="num">9</span> Budżet na komputer (bez monitora i peryferiów)</h2>
+        <div class="grid budget-grid">
+          <label><input type="radio" name="budget_range" value="Do 2000 zł" /> Do&nbsp;2000&nbsp;zł</label>
+          <label><input type="radio" name="budget_range" value="2000–5000 zł" /> 2000–5000&nbsp;zł</label>
+          <label><input type="radio" name="budget_range" value="5000–10000 zł" /> 5000–10000&nbsp;zł</label>
+          <label><input type="radio" name="budget_range" value="10000+ zł" /> 10000+&nbsp;zł</label>
         </div>
-        <label class="inline">
+        <label class="inline manual-budget">
           Lub wpisz kwotę ręcznie:
           <input type="number" name="budget_amount" min="0" step="100" placeholder="np. 6500" />
           <span class="suffix">zł</span>
@@ -338,7 +358,7 @@
 
       <!-- Pola meta do CSV -->
       <input type="hidden" name="submitted_at" id="submitted_at" />
-      <input type="hidden" name="form_version" value="v2.0" />
+      <input type="hidden" name="form_version" value="v2.1" />
 
       <div class="actions">
         <button type="submit" id="submit-btn">Wyślij</button>
