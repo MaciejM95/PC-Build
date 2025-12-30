@@ -8,7 +8,6 @@ html,body{ margin:0; padding:0; background:var(--bg); color:var(--text); font-fa
 .nav a{ color:var(--muted); text-decoration:none; padding:8px 10px; border-radius:8px }
 .nav a:hover{ color:var(--text); background:#0f1724 }
 .nav a.active{ color:#0b0f14; background:linear-gradient(135deg,var(--accent),var(--accent-2)); font-weight:700 }
-@media (max-width:560px){ .topbar{ gap:8px } .nav{ width:100% } }
 .progressbar{ position:sticky; top:56px; width:100%; background:#0b1320; border-bottom:1px solid var(--border); display:grid; grid-template-columns:1fr auto; align-items:center; padding:8px 14px; z-index:48 }
 .progress-fill{ height:6px; background:linear-gradient(90deg,var(--accent),var(--accent-2)); border-radius:6px; width:14% }
 .progress-text{ color:var(--muted); font-size:.9rem; margin-left:10px }
@@ -18,7 +17,7 @@ html,body{ margin:0; padding:0; background:var(--bg); color:var(--text); font-fa
 .subtitle{ color:var(--muted); margin:0 0 16px }
 .card{ background:var(--card); border:1px solid var(--border); border-radius:14px; padding:18px; margin:18px 0 }
 .block{ margin:16px 0 }
-.hint{ color:var(--muted); font-weight:normal; font-size:.95rem }
+.hint{ color:var(--muted); font-weight:normal; font-size:.9rem }
 .hint-line{ display:block; color:var(--muted); font-size:.85rem; margin-top:4px }
 .grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:10px 16px; margin-top:8px }
 .inline{ display:grid; grid-template-columns:auto 1fr; gap:8px; align-items:center }
@@ -53,3 +52,16 @@ button:hover,.button:hover{ filter:brightness(1.08) }
 .case-info{ border:1px solid var(--border); border-radius:10px; background:#0f1521; padding:12px }
 .case-info h3{ margin:0 0 6px }
 @media (max-width:780px){ .case-layout.compact{ grid-template-columns:1fr } }
+
+/* Square option style */
+.opt-square{ display:flex; align-items:center; gap:10px; padding:10px; border:1px solid var(--border); border-radius:12px; background:#0f1521; }
+.opt-square.mini{ display:inline-flex; }
+.opt-square input[type="radio"], .opt-square input[type="checkbox"]{ accent-color: var(--accent); }
+.opt-square span{ color:var(--text); font-size:.95rem; }
+.opt-square .icon{ width:22px; text-align:center; filter:saturate(1.2); }
+.opt-square:hover{ border-color:#3a4864; }
+.opt-square input:checked + span{ font-weight:700; color:#eaf3ff; }
+.opt-square input:checked + .icon + span{ font-weight:700; color:#eaf3ff; }
+
+/* Select inside opt-square */
+.opt-square select{ margin-top:6px; }

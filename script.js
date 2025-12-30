@@ -1,13 +1,10 @@
 
 // Tryb Bazowy — brak innych formularzy
 document.addEventListener('DOMContentLoaded', () => {
-  // Timestamp
   const sb = document.getElementById('submitted_at_b');
   if (sb) sb.value = new Date().toISOString();
-
   const form = document.getElementById('form-bazowy');
 
-  // UŻYCIE → warunkowe bloki (np. Gry)
   function bindUsageConditions() {
     const usage = form.querySelectorAll('input[name="usage[]"]');
     const blocks = form.querySelectorAll('.cond');
@@ -24,17 +21,14 @@ document.addEventListener('DOMContentLoaded', () => {
     update();
   }
 
-  // Uniwersalne togglowanie na bazie data-* (radio/checkbox)
   function bindDataToggles() {
     const toggles = form.querySelectorAll('[data-toggle]');
-    // Grupuj po name (dla radio)
     const groups = new Map();
     toggles.forEach(el => {
       const name = el.getAttribute('name') || el.id || Math.random().toString(36).slice(2);
       if (!groups.has(name)) groups.set(name, []);
       groups.get(name).push(el);
     });
-    // Podpinamy na całej grupie, żeby każdy klik odświeżał widoczność
     groups.forEach((els) => {
       function update() {
         els.forEach(el => {
@@ -61,7 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Opis obudowy (pigułki)
   function bindCaseInfo() {
     const infoText = document.getElementById('case-info-text');
     const radios = form.querySelectorAll('input[name="case_size"]');
@@ -69,17 +62,18 @@ document.addEventListener('DOMContentLoaded', () => {
       'Mini‑ITX (Mini)': 'Najmniejsza obudowa: 1 slot GPU, ostrożnie z chłodzeniem i wysokością coolera.',
       'mATX (Mały)': 'Mały, ale elastyczny: więcej slotów niż ITX, rozsądny airflow, nadal kompakt.',
       'ATX (Standardowy)': 'Uniwersalny wybór: pełna kompatybilność, dobra rozbudowa, wygodny montaż.',
-      'Full Tower (Duży)': 'Najwięcej miejsca: świetny airflow, LC, wiele dysków, duże GPU, łatwa rozbudowa/cisza.'
+      'Full Tower (Duży)': 'Najwięcej miejsca: świetny airflow, LC, wiele dysków, duże GPU, łatwa rozbudowa/cisza.',
+      'Bez znaczenia': 'Dobierzemy rozmiar do Twoich potrzeb: airflow vs. cisza, miejsce na GPU/dyski, budżet i przyszła rozbudowa.'
     };
     function update() {
       const checked = form.querySelector('input[name="case_size"]:checked');
-      infoText.textContent = checked ? (map[checked.value] || infoText.textContent) : 'Wybierz rozmiar po lewej — tutaj pokażemy krótki opis praktycznych zastosowań.';
+      infoText.textContent = checked ? (map[checked.value] || infoText.textContent)
+                                     : 'Wybierz rozmiar po lewej — tutaj pokażemy krótki opis praktycznych zastosowań.';
     }
     radios.forEach(r => r.addEventListener('change', update));
     update();
   }
 
-  // Pasek postępu (obserwuje sekcje)
   function setupProgress() {
     const stepEl = document.getElementById('progress-step');
     const totalEl = document.getElementById('progress-total');
@@ -108,11 +102,11 @@ document.addEventListener('DOMContentLoaded', () => {
     setProg(1);
   }
 
-  // Submit do Formspree
   function bindSubmit() {
     const status = document.getElementById('status');
     const btn = document.getElementById('submit-btn-b');
     const thanks = document.getElementById('thanks');
+    const form = document.getElementById('form-bazowy');
     form.addEventListener('submit', async (ev) => {
       ev.preventDefault();
       if (status) status.textContent = '';
@@ -148,7 +142,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Inicjalizacja
   bindUsageConditions();
   bindDataToggles();
   bindCaseInfo();
