@@ -3,6 +3,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const submittedAt = document.getElementById('submitted_at');
   if (submittedAt) submittedAt.value = new Date().toISOString();
 
+  // Mode bar note
+  const modeNote = document.getElementById('mode-note');
+  const modeRadios = document.querySelectorAll('input[name="build_mode"]');
+  const modeTexts = {
+    'Bazowy': 'Tryb Bazowy — prosty dobór bez szczegółowej konfiguracji podzespołów. (Pro/SimRig: placeholder, wkrótce rozszerzymy.)',
+    'Pro': 'Tryb Pro — szczegółowe wybory poszczególnych podzespołów (placeholder).',
+    'SimRig': 'Tryb SimRig — builder zestawu symracingowego (placeholder).'
+  };
+  function updateMode() {
+    const val = Array.from(modeRadios).find(r => r.checked)?.value || 'Bazowy';
+    if (modeNote) modeNote.innerHTML = `Tryb <strong>${val}</strong> — ${modeTexts[val]}`;
+  }
+  modeRadios.forEach(r => r.addEventListener('change', updateMode));
+  updateMode();
+
   // Warunkowe sekcje: usage[]
   const usageCheckboxes = document.querySelectorAll('input[name="usage[]"]');
   const conditionalBlocks = document.querySelectorAll('.cond');
@@ -33,6 +48,36 @@ document.addEventListener('DOMContentLoaded', () => {
     monitorDetails.hidden = (val !== 'Tak');
   }
   monitorRadios.forEach(r => r.addEventListener('change', updateMonitor));
+
+  // Progress bar: detect current section on scroll
+  const sections = Array.from(document.querySelectorAll('section.block'));
+  const progressStepEl = document.getElementById('progress-step');
+  const progressFillEl = document.querySelector('.progress-fill');
+  const totalSteps = sections.length; // should be 9
+
+  function setProgress(stepIndex) {
+    const step = Math.min(Math.max(stepIndex, 1), totalSteps);
+    if (progressStepEl) progressStepEl.textContent = step;
+    const pct = Math.round((step / totalSteps) * 100);
+    if (progressFillEl) progressFillEl.style.width = pct + '%';
+  }
+
+  // IntersectionObserver to find most visible section
+  const observer = new IntersectionObserver((entries) => {
+    let topMost = null;
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const stepAttr = entry.target.getAttribute('data-step');
+        const rect = entry.target.getBoundingClientRect();
+        const visible = Math.max(0, Math.min(window.innerHeight, rect.bottom) - Math.max(0, rect.top));
+        topMost = (!topMost || visible > topMost.visible) ? { step: Number(stepAttr), visible } : topMost;
+      }
+    });
+    if (topMost) setProgress(topMost.step);
+  }, { root: null, threshold: [0.3, 0.6] });
+
+  sections.forEach(sec => observer.observe(sec));
+  setProgress(1);
 
   // Submit
   const form = document.getElementById('pc-form');

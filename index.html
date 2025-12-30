@@ -17,6 +17,22 @@
     </nav>
   </header>
 
+  <!-- MODE BAR: Bazowy / Pro / SimRig -->
+  <section class="modebar">
+    <div class="segmented">
+      <label class="seg"><input type="radio" name="build_mode" value="Bazowy" checked /><span>Bazowy</span></label>
+      <label class="seg"><input type="radio" name="build_mode" value="Pro" /><span>Pro</span></label>
+      <label class="seg"><input type="radio" name="build_mode" value="SimRig" /><span>SimRig</span></label>
+    </div>
+    <p id="mode-note" class="tiny">Tryb <strong>Bazowy</strong> — prosty dobór bez szczegółowej konfiguracji podzespołów. (Pro/SimRig: placeholder, wkrótce rozszerzymy.)</p>
+  </section>
+
+  <!-- Progress bar (sticky) -->
+  <div class="progressbar" aria-label="Postęp"> 
+    <div class="progress-fill" style="width: 11%;"></div>
+    <div class="progress-text">Krok <span id="progress-step">1</span>/9</div>
+  </div>
+
   <main class="container">
     <section class="hero">
       <h1>Szybki kwestionariusz – dobór komputera stacjonarnego</h1>
@@ -26,8 +42,8 @@
     <form id="pc-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate class="card">
       <input type="hidden" name="_subject" value="Kwestionariusz – dobór komputera" />
 
-      <!-- 1: Zastosowanie główne (tylko rzeczy wpływające na dobór hardware) -->
-      <section class="block">
+      <!-- 1: Zastosowanie główne -->
+      <section class="block" data-step="1">
         <h2><span class="num">1</span> Do czego głównie będzie używany komputer? <span class="hint">(można zaznaczyć więcej niż jedną opcję)</span></h2>
         <div class="grid">
           <label><input type="checkbox" name="usage[]" value="Praca biurowa / nauka / internet" /> Praca biurowa / nauka / internet</label>
@@ -41,7 +57,7 @@
           </label>
         </div>
 
-        <!-- Detale: GRY (bez monitora w podkategorii) -->
+        <!-- Gry (bez monitora w podkategorii) -->
         <div class="sub cond" data-condition="Gry" hidden>
           <h3>Podkategoria: Gry</h3>
           <div class="grid">
@@ -56,8 +72,8 @@
         </div>
       </section>
 
-      <!-- 2: Obudowa — opisy pod każdą opcją -->
-      <section class="block">
+      <!-- 2: Obudowa -->
+      <section class="block" data-step="2">
         <h2><span class="num">2</span> Obudowa — preferencje rozmiaru</h2>
         <div class="case-descriptions">
           <label class="case-option">
@@ -87,8 +103,8 @@
         </div>
       </section>
 
-      <!-- 3: Dysk — preferencje dla dysku systemowego (z adnotacją) -->
-      <section class="block">
+      <!-- 3: Dysk -->
+      <section class="block" data-step="3">
         <h2><span class="num">3</span> Dysk — preferencje dla dysku systemowego</h2>
         <p class="tiny">Jeśli wybierzesz „Nie”, <strong>skonsultujemy to oddzielnie</strong> po kontakcie.</p>
         <div class="grid">
@@ -104,6 +120,7 @@
                 <option>SSD (NVMe) + HDD</option>
                 <option>HDD (niezalecane)</option>
               </select>
+              <span class="hint-line">SSD (NVMe) — najszybszy; SSD+HDD — tania pojemność na dane.</span>
             </label>
             <label>Rozmiar dysku systemowego:
               <select name="os_drive_size">
@@ -112,6 +129,7 @@
                 <option>1 TB</option>
                 <option>2 TB</option>
               </select>
+              <span class="hint-line">512 GB minimum, 1 TB wygodnie przy grach/ideo.</span>
             </label>
             <label>Rozmiar dysku danych (opcjonalnie):
               <select name="data_drive_size">
@@ -121,13 +139,14 @@
                 <option>4 TB</option>
                 <option>6 TB+</option>
               </select>
+              <span class="hint-line">Duże archiwa/footage → 4 TB+ (HDD/SSD budżetowo).</span>
             </label>
           </div>
         </div>
       </section>
 
-      <!-- 4: System operacyjny (monitor skonsultować przesunięty poniżej) -->
-      <section class="block">
+      <!-- 4: System operacyjny -->
+      <section class="block" data-step="4">
         <h2><span class="num">4</span> System operacyjny</h2>
         <div class="grid">
           <label><input type="radio" name="os" value="Windows" /> Windows</label>
@@ -136,8 +155,8 @@
         </div>
       </section>
 
-      <!-- 5: Monitor — czy chcesz skonsultować? (z podkategoriami) -->
-      <section class="block">
+      <!-- 5: Monitor (z podkategoriami + podpowiedzi) -->
+      <section class="block" data-step="5">
         <h2><span class="num">5</span> Monitor — czy chcesz skonsultować?</h2>
         <p class="tiny">Możesz zostawić puste — skonsultujemy to oddzielnie.</p>
         <div class="grid">
@@ -153,6 +172,7 @@
                 <option>2</option>
                 <option>3+</option>
               </select>
+              <span class="hint-line">3+ monitorów → sprawdzimy wyjścia wideo GPU (HDMI/DP/USB‑C).</span>
             </label>
             <label>Rodzaj:
               <select name="monitor_type">
@@ -162,6 +182,7 @@
                 <option>Ultrawide</option>
                 <option>Zakrzywiony</option>
               </select>
+              <span class="hint-line">Gaming → wysoka częstotliwość; Pro grafika → lepsze kolory/kalibracja.</span>
             </label>
             <label>Odświeżanie:
               <select name="monitor_refresh">
@@ -173,6 +194,7 @@
                 <option>165 Hz</option>
                 <option>240 Hz+</option>
               </select>
+              <span class="hint-line">144 Hz+ — płynne granie; 60–75 Hz — biuro/praca.</span>
             </label>
             <label>Rozmiar:
               <select name="monitor_size">
@@ -181,6 +203,7 @@
                 <option>32"</option>
                 <option>34"+</option>
               </select>
+              <span class="hint-line">27–32″: uniwersalnie; 34″+ ultrawide — szeroka przestrzeń robocza.</span>
             </label>
             <label>Rozdzielczość:
               <select name="monitor_res">
@@ -189,6 +212,7 @@
                 <option>4K</option>
                 <option>UWQHD</option>
               </select>
+              <span class="hint-line">1440p — sweet spot do gier; 4K — szczegóły, ale wyższe wymagania GPU.</span>
             </label>
             <label>Rodzaj matrycy:
               <select name="monitor_panel">
@@ -197,13 +221,14 @@
                 <option>TN</option>
                 <option>OLED</option>
               </select>
+              <span class="hint-line">IPS — najlepsze kolory; VA — kontrast; TN — szybki budżet; OLED — perfekcyjna czerń.</span>
             </label>
           </div>
         </div>
       </section>
 
       <!-- 6: Części posiadane -->
-      <section class="block">
+      <section class="block" data-step="6">
         <h2><span class="num">6</span> Czy masz już jakieś części?</h2>
         <div class="grid">
           <label><input type="radio" name="parts_have" value="Nie" /> Nie</label>
@@ -215,15 +240,15 @@
         </div>
       </section>
 
-      <!-- 7: Dodatkowe uwagi / oczekiwania -->
-      <section class="block">
+      <!-- 7: Dodatkowe uwagi -->
+      <section class="block" data-step="7">
         <h2><span class="num">7</span> Dodatkowe uwagi / oczekiwania</h2>
         <textarea name="notes" rows="4" placeholder="np. „ma być bardzo cichy”, „dużo RGB”, „pod 2–3 monitory”, „możliwa rozbudowa”, „chłodzenie wodne”"></textarea>
         <p class="tiny">(Możesz zostawić puste — dopytamy w odpowiedzi)</p>
       </section>
 
-      <!-- 8: Kontakt (adnotacja, że wymagane) -->
-      <section class="block">
+      <!-- 8: Kontakt -->
+      <section class="block" data-step="8">
         <h2><span class="num">8</span> Kontakt</h2>
         <p class="tiny"><strong>Informacja o kontakcie jest niezbędna</strong> do przygotowania rekomendacji.</p>
         <label class="inline">
@@ -234,8 +259,8 @@
         </label>
       </section>
 
-      <!-- 9: Budżet (z adnotacją o peryferiach) -->
-      <section class="block">
+      <!-- 9: Budżet -->
+      <section class="block" data-step="9">
         <h2><span class="num">9</span> Budżet na komputer (bez monitora i peryferiów)</h2>
         <p class="tiny">Peryferia = klawiatura, mysz, słuchawki, głośniki.</p>
         <div class="grid budget-grid">
@@ -252,7 +277,7 @@
       </section>
 
       <input type="hidden" name="submitted_at" id="submitted_at" />
-      <input type="hidden" name="form_version" value="v2.8" />
+      <input type="hidden" name="form_version" value="v2.9" />
 
       <div class="actions">
         <button type="submit" id="submit-btn">Wyślij</button>
