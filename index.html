@@ -64,11 +64,11 @@
         <h2>3. Dysk — preferencje dla dysku systemowego</h2>
         <div class="pill-group">
           <label class="pill"><input type="radio" name="sys_disk" value="Nie"><span>Nie</span></label>
-          <label class="pill"><input type="radio" name="sys_disk" value="Tak"><span>Tak</span></label>
+          <label class="pill"><input type="radio" name="sys_disk" value="Tak" data-toggle="radio" data-target="#disk-config" data-show-when="Tak"><span>Tak</span></label>
         </div>
-        <div class="sub fade" data-toggle name="sys_disk" data-target="#disk-config" data-show-when="Tak">
+        <div class="sub fade">
           <h3>Konfiguracja i rozmiary</h3>
-          <div id="disk-config" class="pill-group pill-group--cols">
+          <div id="disk-config" class="pill-group pill-group--cols" hidden>
             <label class="pill pill--compact"><input type="radio" name="disk_config" value="SSD (NVMe)"><span>SSD (NVMe)</span></label>
             <label class="pill pill--compact"><input type="radio" name="disk_config" value="SSD (NVMe) + HDD"><span>SSD (NVMe) + HDD</span></label>
             <label class="pill pill--compact"><input type="radio" name="disk_config" value="HDD (niezalecane)"><span>HDD (niezalecane)</span></label>
@@ -91,11 +91,11 @@
         <h2>4. Monitor — czy chcesz skonsultować?</h2>
         <div class="pill-group">
           <label class="pill"><input type="radio" name="monitor_consult" value="Nie"><span>Nie</span></label>
-          <label class="pill"><input type="radio" name="monitor_consult" value="Tak"><span>Tak</span></label>
+          <label class="pill"><input type="radio" name="monitor_consult" value="Tak" data-toggle="radio" data-target="#monitor-params" data-show-when="Tak"><span>Tak</span></label>
         </div>
-        <div class="sub fade" data-toggle name="monitor_consult" data-target="#monitor-params" data-show-when="Tak">
+        <div class="sub fade">
           <h3>Parametry monitora</h3>
-          <div id="monitor-params">
+          <div id="monitor-params" hidden>
             <div class="pill-group pill-group--cols">
               <label class="pill pill--compact"><input type="radio" name="monitors" value="1"><span>1</span></label>
               <label class="pill pill--compact"><input type="radio" name="monitors" value="2"><span>2</span></label>
